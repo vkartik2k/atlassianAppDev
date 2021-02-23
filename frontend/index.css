@@ -1,0 +1,73 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  background-color: #3f3d3f;
+}
+
+* {
+  box-sizing: border-box;
+}
+.container {
+  height: 100%;
+}
+
+.header {
+  height: 50px;
+  width: 100%;
+  background-color: #dfecf3;
+  display: flex;
+  padding: 8px;
+  position: fixed;
+  align-items: center;
+  -webkit-box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.75);
+  z-index: 5;
+}
+
+.header2 {
+  position: fixed;
+  left: 50%;
+  top: 38px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 84px;
+  z-index: 5;
+}
+
+.infobar {
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  font-size: 15;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 3;
+}
+
+.overlay {
+    left: 0;
+    top: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.713);
+    z-index: 4;
+    backdrop-filter: blur(2px);
+}
+
+.overlay div {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 340px;
+    border-radius: 10px;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    padding: 15px;
+    text-align: center;
+    border: black solid 2px;
+}
