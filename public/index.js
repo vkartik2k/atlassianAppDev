@@ -37,25 +37,25 @@ function loadCanvas() {
     var coffeeshop = new Image();
     coffeeshop.src = "assets/coffeeshop.png";
     coffeeshop.onload = function () {
-        ctx.drawImage(coffeeshop, 835, 175, 198, 144);
+        ctx.drawImage(coffeeshop, 830, 160, 226.87, 165);
     }
 
     var gym = new Image();
     gym.src = "assets/gym.png";
     gym.onload = function () {
-        ctx.drawImage(gym, 350, 20, 227, 164);
+        ctx.drawImage(gym, 330, 8, 250, 180);
         
     }
     var stadium = new Image();
     stadium.src = "assets/stadium.png";
     stadium.onload = function () {
-        ctx.drawImage(stadium, 480, 170, 307, 238);
+        ctx.drawImage(stadium, 440, 140, 354.6, 275);
         
     }
     var office = new Image();
     office.src = "assets/office.png";
     office.onload = function () {
-        ctx.drawImage(office, 150, 60, 200, 250);
+        ctx.drawImage(office, 180, 10, 224, 280);
         
     }
     var person1 = new Image();
