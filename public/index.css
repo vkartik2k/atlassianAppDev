@@ -76,6 +76,15 @@ line-height: 1.4;
     border: black solid 2px;
 }
 
+.overlayWindow div{
+  width: 95%;
+  height: 85%;
+  margin-top: 2%;
+}
+
+
+.dot
+
 .kuHeader {
   font-family: 'Overpass', sans-serif;
   font-weight: bold;
@@ -115,4 +124,9 @@ line-height: 1.4;
 .kuBtnLogo {
   padding-top: 0px;
   margin-bottom: -9px;
+}
+
+iframe {
+  width: 100%;
+  height: 93%;
 }

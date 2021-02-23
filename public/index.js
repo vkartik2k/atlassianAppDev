@@ -94,7 +94,10 @@ function loadCanvas() {
 }
 
 $(document).ready(function () {
-    if (!localStorage.user && (typeof localStorage.user === 'undefined')) $('.overlayLogin').show()
+    // if (!localStorage.user && (typeof localStorage.user === 'undefined'))
+    //  $('#overlayLogin').show()
+    //  $('#overlayCollab').show()
+     $('#overlayAboutUs').show()
 
     $('#loginBtn').click(() => {
         const email = $("#loginEmail").val()
