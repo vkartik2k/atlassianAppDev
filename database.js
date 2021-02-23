@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 
-const database = new Sequelize('atlassianhack', 'root', 'SYSADMIN@1234!',{
+const database = new Sequelize('atlassianhack', 'sama', 'password',{
     host : 'localhost',
     dialect : 'mysql',
     pool : {
@@ -11,34 +11,19 @@ const database = new Sequelize('atlassianhack', 'root', 'SYSADMIN@1234!',{
 })
 
 const User = database.define('User', {
-    phone : {
+    email : {
         type : Sequelize.STRING,
         primaryKey : true,
     },
-    handle : {
+    password : {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    displayPicture : {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    registeredOn : {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    lastSeen : {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    isActive :{
-        type: Sequelize.STRING,
-        allowNull: false,
-    }
+
 })
 
 database.sync()
     .then(() => console.log('DATABASE HAS BE SYNCED.'))
-    .catch((err) => console.error('PROBLEM IN SYNCING DATABASE.'))
+    .catch((err) => console.error('PROBLEM IN SYNCING DATABASE. :' + err))
 
-exports = module.exports = {Message, User}
+exports = module.exports = { User}

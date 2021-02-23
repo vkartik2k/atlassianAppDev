@@ -1,6 +1,6 @@
 const express = require('express')
 const socketio = require('socket.io')
-// const db = require('./database')
+const db = require('./database')
 const api = require('./routes/api')
 
 const http = require('http')
@@ -12,6 +12,8 @@ const io = socketio(server)
 
 app.use(express.json())
 app.use(express.urlencoded({ extenstion: true }))
+
+app.use('/', express.static(__dirname+'/public'))
 
 let connectedClient = {}
 
@@ -65,6 +67,6 @@ let connectedClient = {}
 
 app.use('/api', api)
 
-server.listen(3000, function () {
+server.listen(3003, function () {
   console.log('App running on http://localhost:3000')
 })

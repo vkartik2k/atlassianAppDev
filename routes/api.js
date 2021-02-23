@@ -1,5 +1,5 @@
 const route = require('express').Router()
-// const db = require('../database')
+const db = require('../database')
 
 // route.post('/register', function (req, res) {
 //   console.log(req.body)
@@ -45,5 +45,29 @@ const route = require('express').Router()
 //     }
 //   })
 // })
+
+
+route.post('/login', function (req, res) {
+  console.log(req.body)
+  db.User.findOne({
+    where : {
+      email : req.body.email,
+      password : req.body.password
+    }
+  }).then(function(user){
+    if(user){     
+        res.send({
+            status: 202,
+            message: "Logged In Successfully!"
+        })
+    }
+    else{
+      res.send({
+        status: 404,
+        message: "Username or Password is invalid!"
+      })
+    }
+  })
+})
 
 module.exports = route
