@@ -99,10 +99,20 @@ line-height: 1.4;
   font-family: Calibri, 'Trebuchet MS', sans-serif;
   font-size: large;
   font-weight: bold;
+  box-shadow: 0px 0px grey;
+}
+
+.kuBtn:hover {
+  transform: translate(-1px, -3px);
+  box-shadow: 2px 3px rgb(199, 199, 199);
+}
+
+.kuBtn:active {
+  transform: translate(0px, 1px);
+  box-shadow: 0px 0px rgb(199, 199, 199);
 }
 
 .kuBtnLogo {
   padding-top: 0px;
-  margin-bottom: -9px;
-  
+  width: 17px;
 }
