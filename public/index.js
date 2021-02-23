@@ -24,48 +24,48 @@ let variables = {
 
 let templates = {
 }
+
 function loadCanvas() {
     let canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
 
     canvas.width = document.getElementById("canvas").width;
     canvas.height = document.getElementById("canvas").height;
-    var counter = 7;
+    var counter = 3;
 
     // canvas.globalCompositeOperation = "destination-over";
     var coffeeshop = new Image();
     coffeeshop.src = "assets/coffeeshop.png";
     coffeeshop.onload = function () {
         ctx.drawImage(coffeeshop, 835, 175, 198, 144);
-        counter--;
     }
 
     var gym = new Image();
     gym.src = "assets/gym.png";
     gym.onload = function () {
         ctx.drawImage(gym, 350, 20, 227, 164);
-        counter--;
+        
     }
     var stadium = new Image();
     stadium.src = "assets/stadium.png";
     stadium.onload = function () {
         ctx.drawImage(stadium, 480, 170, 307, 238);
-        counter--;
+        
     }
     var office = new Image();
     office.src = "assets/office.png";
     office.onload = function () {
         ctx.drawImage(office, 150, 60, 200, 250);
-        counter--;
+        
     }
     var person1 = new Image();
     person1.src = "assets/person1.png";
     person1.onload = function () {
         counter--;
         if (counter<=0) {
-            ctx.drawImage(person1, 550, 370, 35, 70);
-            ctx.drawImage(person2, 450, 340);
-            ctx.drawImage(atlassianCard, 550, 370, 90, 90);
+            ctx.drawImage(atlassianCard, 520, 380, 90, 90);
+            ctx.drawImage(person1, 580, 390, 35, 70);
+            ctx.drawImage(person2, 450, 340, 35, 70);
         }
     }
     
@@ -74,9 +74,9 @@ function loadCanvas() {
     person2.onload = function () {
         counter--;
         if (counter<=0) {
-            ctx.drawImage(person1, 550, 370, 35, 70);
-            ctx.drawImage(person2, 450, 340);
-            ctx.drawImage(atlassianCard, 550, 370, 90, 90);
+            ctx.drawImage(atlassianCard, 520, 380, 90, 90);
+            ctx.drawImage(person1, 580, 390, 35, 70);
+            ctx.drawImage(person2, 450, 340, 35, 70);
         }
     }
     var atlassianCard = new Image();
@@ -84,9 +84,9 @@ function loadCanvas() {
     atlassianCard.onload = function () {
         counter--;
         if (counter<=0) {
-            ctx.drawImage(person1, 550, 370, 35, 70);
-            ctx.drawImage(person2, 450, 340);
-            ctx.drawImage(atlassianCard, 550, 370, 90, 90);
+            ctx.drawImage(atlassianCard, 520, 380, 90, 90);
+            ctx.drawImage(person1, 580, 390, 35, 70);
+            ctx.drawImage(person2, 450, 340, 35, 70);
         }
     }
     
