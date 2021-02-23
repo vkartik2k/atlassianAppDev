@@ -43,32 +43,32 @@
       Time : 11:49
     </div>
 
-    <div class="overlay">
+    <div class="overlayLogin overlay" style="display: none;">
         <div>
             <h2 class="kuHeader">
               LOG INTO
               <br> VIRTUAL CAMPUS
             </h2>
-            
             <br>
             <button class="kuSignUpFields kuBtn"><img class="kuBtnLogo" src="./assets/atLogo.png" alt="" height="30"> Login with Atlassian</button>
             <br>
-            
             <br>
             <span style="color: gray;">or</span>
             <br>
             <br>
-            <input class="kuSignUpFields" placeholder="Email">
+            <input class="kuSignUpFields" placeholder="Email" id="loginEmail">
             <br>
             <br>
-            <input class="kuSignUpFields" placeholder="Password" type="password">
+            <input class="kuSignUpFields" placeholder="Password" type="password" id="loginPassword">
             <br>
             <br>
             <br>
-            <button class="kuSignUpFields kuLogin kuBtn">Login</button>
-
+            <button class="kuSignUpFields kuLogin kuBtn" id="loginBtn">Login</button>
         </div>
     </div>
     
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>

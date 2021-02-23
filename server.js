@@ -65,7 +65,7 @@ let connectedClient = {}
 //   })
 // })
 
-app.use('/api', api)
+app.use('/route', api)
 
 server.listen(3003, function () {
   console.log('App running on http://localhost:3000')

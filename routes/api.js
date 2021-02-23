@@ -50,19 +50,25 @@ const db = require('../database')
 route.post('/login', function (req, res) {
   console.log(req.body)
   db.User.findOne({
-    where : {
-      email : req.body.email,
-      password : req.body.password
+    where: {
+      email: req.body.email,
+      password: req.body.password
     }
-  }).then(function(user){
-    if(user){     
-        res.send({
-            status: 202,
-            message: "Logged In Successfully!"
-        })
-    }
-    else{
+  }).then(function (user) {
+    if (user) {
       res.send({
+        done: true,
+        status: 202,
+        message: "Logged In Successfully!",
+        user: {
+          email: req.body.email,
+          password: req.body.password
+        }
+      })
+    }
+    else {
+      res.send({
+        done: false,
         status: 404,
         message: "Username or Password is invalid!"
       })
