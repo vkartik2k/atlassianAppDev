@@ -20,10 +20,17 @@ function capitalizeFirstLetter(string) {
 }
 
 let variables = {
+    person : {
+        x : 10,
+        y : 20,
+        orientation : 0 
+    }
 }
 
 let templates = {
 }
+
+
 
 function loadCanvas() {
     let canvas = document.getElementById("canvas");
