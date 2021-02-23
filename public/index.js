@@ -24,70 +24,70 @@ let variables = {
 
 let templates = {
 }
-var myGamePiece;
-
-
-
-
-function component(width, height, color, x, y, type) {
-    this.type = type;
-    if (type == "image") {
-        this.image = new Image();
-        this.image.src = color;
-    }
-    this.width = width;
-    this.height = height;
-    this.speedX = 0;
-    this.speedY = 0;    
-    this.x = x;
-    this.y = y;    
-    this.update = function() {
-        ctx = myGameArea.context;
-        if (type == "image") {
-            ctx.drawImage(this.image, 
-                this.x, 
-                this.y,
-                this.width, this.height);
-        } else {
-            ctx.fillStyle = color;
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        }
-    }
-    this.newPos = function() {
-        this.x += this.speedX;
-        this.y += this.speedY;        
-    }    
-}
-
-
-function move(dir) {
-    myGamePiece.image.src = "angry.gif";
-    if (dir == "up") {myGamePiece.Yspeed = -1; }
-    if (dir == "down") {myGamePiece.speedY = 1; }
-    if (dir == "left") {myGamePiece.speedX = -1; }
-    if (dir == "right") {myGamePiece.speedX = 1; }
-}
-
-function clearmove() {
-    myGamePiece.image.src = "smiley.gif";
-    myGamePiece.speedX = 0; 
-    myGamePiece.speedY = 0; 
-}
-
 function loadCanvas() {
     let canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
 
     canvas.width = document.getElementById("canvas").width;
     canvas.height = document.getElementById("canvas").height;
+    var counter = 7;
+
+    // canvas.globalCompositeOperation = "destination-over";
+    var coffeeshop = new Image();
+    coffeeshop.src = "assets/coffeeshop.png";
+    coffeeshop.onload = function () {
+        ctx.drawImage(coffeeshop, 835, 175, 198, 144);
+        counter--;
+    }
+
+    var gym = new Image();
+    gym.src = "assets/gym.png";
+    gym.onload = function () {
+        ctx.drawImage(gym, 350, 20, 227, 164);
+        counter--;
+    }
+    var stadium = new Image();
+    stadium.src = "assets/stadium.png";
+    stadium.onload = function () {
+        ctx.drawImage(stadium, 480, 170, 307, 238);
+        counter--;
+    }
+    var office = new Image();
+    office.src = "assets/office.png";
+    office.onload = function () {
+        ctx.drawImage(office, 150, 60, 200, 250);
+        counter--;
+    }
+    var person1 = new Image();
+    person1.src = "assets/person1.png";
+    person1.onload = function () {
+        counter--;
+        if (counter<=0) {
+            ctx.drawImage(person1, 550, 370, 35, 70);
+            ctx.drawImage(person2, 450, 340);
+            ctx.drawImage(atlassianCard, 550, 370, 90, 90);
+        }
+    }
     
+    var person2 = new Image();
+    person2.src = "assets/person2.png";
+    person2.onload = function () {
+        counter--;
+        if (counter<=0) {
+            ctx.drawImage(person1, 550, 370, 35, 70);
+            ctx.drawImage(person2, 450, 340);
+            ctx.drawImage(atlassianCard, 550, 370, 90, 90);
+        }
+    }
     var atlassianCard = new Image();
     atlassianCard.src = "assets/atlassian.png";
-    atlassianCard.width=canvas.width;
-    atlassianCard.height=canvas.height;
-    // Make sure the image is loaded first otherwise nothing will draw.
     atlassianCard.onload = function () {
-        ctx.drawImage(atlassianCard, 540, 340);
+        counter--;
+        if (counter<=0) {
+            ctx.drawImage(person1, 550, 370, 35, 70);
+            ctx.drawImage(person2, 450, 340);
+            ctx.drawImage(atlassianCard, 550, 370, 90, 90);
+        }
     }
     
 
@@ -105,7 +105,7 @@ $(document).ready(function () {
                     localStorage.setItem("user", JSON.stringify(data.user));
                     console.log(data.user)
                     $('.overlayLogin').hide()
-                    
+
                 }
                 else {
                     console.log("Error")
