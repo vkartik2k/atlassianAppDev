@@ -176,3 +176,17 @@ iframe {
 
   text-align: center;
 }
+
+
+.joinBtn {
+  position: fixed;
+  height: 180px;
+  top:110px;
+  left:300px;
+  cursor: pointer;
+}
+
+.joinBtn:hover {
+
+  left:305px;
+}

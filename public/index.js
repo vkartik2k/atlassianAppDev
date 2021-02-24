@@ -336,7 +336,7 @@ $(document).ready(function () {
      $('#overlayStadium').hide()
      $('#overlayOffice').hide()
      $('#overlayAboutUs').hide()
-     $('#overlayCafe').hide()
+     $('#overlayCafe').show()
      $('#crossBtn').hide()
 
     $('#loginBtn').click(() => {
