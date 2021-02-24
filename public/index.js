@@ -147,6 +147,8 @@ function loadCanvas() {
     var loop = setInterval(function () {
         update();
         draw();
+        document.getElementById("xvalue").innerHTML = camerax;
+        document.getElementById("yvalue").innerHTML = cameray;
     }, 1000 / fps);
 
 }
