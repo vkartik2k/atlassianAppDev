@@ -173,7 +173,6 @@ iframe {
 
 #overlayCafe {
   padding-top: 50px;
-  display: flex;
-  justify-content: center;
-  align-self: center;
+
+  text-align: center;
 }
