@@ -214,10 +214,10 @@ function loadCanvas() {
                     $('#overlayAboutUs').show()
                     $('#crossBtn').show()
             }
-            // if(Up['office']){
-            //      $('#overlayOffice').show()
-            // }
-            // $('#overlayLogin').show()
+            if(Up['gym']){
+                 $('#overlayGym').show()
+                $('#crossBtn').show()
+            }
         } 
      }
 
@@ -312,7 +312,7 @@ function loadCanvas() {
 
 $(document).ready(function () {
     // if (!localStorage.user && (typeof localStorage.user === 'undefined'))
-     $('#overlayGym').show()
+     $('#overlayGym').hide()
      $('#overlayOffice').hide()
      $('#overlayAboutUs').hide()
      $('#crossBtn').hide()
@@ -346,6 +346,11 @@ $(document).ready(function () {
         }
         if($('#overlayAboutUs').is(":visible")){
             $('#overlayAboutUs').hide()
+            $('#crossBtn').hide()
+        }
+        if($('#overlayGym').is(":visible")){
+            document.getElementById('videoPlayer').pause()
+            $('#overlayGym').hide()
             $('#crossBtn').hide()
         }
     })
