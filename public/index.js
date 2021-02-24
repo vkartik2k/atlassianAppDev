@@ -35,13 +35,17 @@ let officeYTrue = 10
 
 let X = {
     'office': 158,
-    'coffeeshop':1 ,
-    'atlassianCard' ;1,
-    'gym':1,
-    'stadium':1
+    'coffeeshop': 801,
+    'atlassianCard': 542,
+    'gym':287,
+    'stadium':425
 }
 let Y = {
-    'office': -17
+    'office': -17,
+    'coffeeshop': 142,
+    'atlassianCard':378,
+    'gym':-14,
+    'stadium':133
 }
 
 // hitbox toggles
@@ -51,17 +55,19 @@ let atlassianCardBox = false
 let gymBox = false
 let stadiumBox = false
 
-let officeUp = false
-let coffeehopUp = false
-let atlassianCardUp = false
-let gymUp = false
-let stadiumUp = false
+let Up = {
+    'office': false,
+    'coffeeshop': false,
+    'atlassianCard': false,
+    'gym': false,
+    'stadium': false
+}
 
 function loadCanvas() {
     let canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
 
-    var camerax = 580, cameray = 400;
+    var camerax = 609, cameray = 423;
     var fps = 60;
     var img;
     var loop;
@@ -78,11 +84,11 @@ function loadCanvas() {
     }
 
     function drawGround() {
-        ctx.drawImage(coffeeshop, 830, 160);
-        ctx.drawImage(gym, 330, 8, 250, 180);
-        // ctx.drawImage(stadium, 440, 140, 354.6, 275);
+        ctx.drawImage(coffeeshop, X['coffeeshop'], Y['coffeeshop']);
+        ctx.drawImage(gym, X['gym'], Y['gym']);
+        ctx.drawImage(stadium, X['stadium'], Y['stadium']);
         ctx.drawImage(office, X['office'], Y['office']);
-        ctx.drawImage(atlassianCard, 520, 380, 90, 90);
+        ctx.drawImage(atlassianCard, X['atlassianCard'], Y['atlassianCard'], 85, 85);
         ctx.drawImage(person1, camerax, cameray, 20, 40);
     }
 
@@ -148,23 +154,23 @@ function loadCanvas() {
     }
 
     function lift (building) {
-        officeUp = true
+        Up[building] = true
         let tempY = officeY;
         let interval = setInterval(() => {
-            Y[building] -= 1
+            Y[building] -= 4
         }, 100);
         setTimeout(() => {
             clearInterval(interval)
-        }, 1000)
+        }, 250)
     }
     function drop (building) {
-        officeUp = false
+        Up[building] = false
         let interval = setInterval(() => {
-            Y[building] += 1
+            Y[building] += 4
         }, 100);
         setTimeout(() => {
             clearInterval(interval)
-        }, 1000)
+        }, 250)
     }
 
     function keyListener(e){
@@ -212,17 +218,62 @@ function loadCanvas() {
         document.getElementById("yvalue").innerHTML = Math.round(cameray,2);
     }, 1000 / fps);
     let checkTriggerShift = setInterval(() => {
-        if(officeBox==true && officeUp==false){
+        if(officeBox==true && Up['office']==false){
             lift('office')
         }
-        else if(officeBox==false && officeUp==true)
+        else if(officeBox==false && Up['office']==true)
             drop('office')
-    }, 1000);
+
+        if(gymBox==true && Up['gym']==false){
+            lift('gym')
+        }
+        else if(gymBox==false && Up['gym']==true)
+            drop('gym')
+
+
+        if(atlassianCardBox==true && Up['atlassianCard']==false){
+            lift('atlassianCard')
+        }
+        else if(atlassianCardBox==false && Up['atlassianCard']==true)
+            drop('atlassianCard')
+
+        if(stadiumBox==true && Up['stadium']==false){
+            lift('stadium')
+        }
+        else if(stadiumBox==false && Up['stadium']==true)
+            drop('stadium')
+
+        if(coffeehopBox==true && Up['coffeeshop']==false){
+            lift('coffeeshop')
+        }
+        else if(coffeehopBox==false && Up['coffeeshop']==true)
+            drop('coffeeshop')
+    }, 100);
     let checkHitbox = setInterval(() => {
         if(dist(camerax,cameray,355,235) < 20)
             officeBox = true
         else
             officeBox = false
+
+        if(dist(camerax,cameray,537,90) < 20)
+            gymBox = true
+        else
+            gymBox = false
+
+        if(dist(camerax,cameray,609,423) < 20)
+            atlassianCardBox = true
+        else
+            atlassianCardBox = false
+
+        if(dist(camerax,cameray,522,298) < 20)
+            stadiumBox = true
+        else
+            stadiumBox = false
+
+        if(dist(camerax,cameray,864,276) < 20)
+            coffeehopBox = true
+        else
+            coffeehopBox = false
     }, 50);
     (function () {
         function checkTime(i) {
