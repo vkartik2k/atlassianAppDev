@@ -207,7 +207,7 @@ function loadCanvas() {
         // Enter key press for lifted building
         if(e.keyCode==13){
             if(Up['office']){
-                 $('#overlayCollab').show()
+                 $('#overlayOffice').show()
                  $('#crossBtn').show()
             }
             if(Up['atlassianCard']){
@@ -215,7 +215,7 @@ function loadCanvas() {
                     $('#crossBtn').show()
             }
             // if(Up['office']){
-            //      $('#overlayCollab').show()
+            //      $('#overlayOffice').show()
             // }
             // $('#overlayLogin').show()
         } 
@@ -312,8 +312,8 @@ function loadCanvas() {
 
 $(document).ready(function () {
     // if (!localStorage.user && (typeof localStorage.user === 'undefined'))
-    //  $('#overlayLogin').show()
-     $('#overlayCollab').hide()
+     $('#overlayGym').show()
+     $('#overlayOffice').hide()
      $('#overlayAboutUs').hide()
      $('#crossBtn').hide()
 
@@ -336,8 +336,8 @@ $(document).ready(function () {
     })
     $('#crossBtn').click(() => {
         console.log('clicked')
-        if($('#overlayCollab').is(":visible")){
-            $('#overlayCollab').hide()
+        if($('#overlayOffice').is(":visible")){
+            $('#overlayOffice').hide()
             $('#crossBtn').hide()
         }
         if($('#overlayLogin').is(":visible")){
