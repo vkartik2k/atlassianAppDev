@@ -157,8 +157,8 @@ function loadCanvas() {
         Up[building] = true
         let tempY = officeY;
         let interval = setInterval(() => {
-            Y[building] -= 4
-        }, 100);
+            Y[building] -= 2
+        }, 50);
         setTimeout(() => {
             clearInterval(interval)
         }, 250)
@@ -166,8 +166,8 @@ function loadCanvas() {
     function drop (building) {
         Up[building] = false
         let interval = setInterval(() => {
-            Y[building] += 4
-        }, 100);
+            Y[building] += 2
+        }, 50);
         setTimeout(() => {
             clearInterval(interval)
         }, 250)
@@ -203,7 +203,22 @@ function loadCanvas() {
                 cameray += 5*0.5;
                 camerax -= 5*0.866;
             }
-        }                           
+        }       
+        // Enter key press for lifted building
+        if(e.keyCode==13){
+            if(Up['office']){
+                 $('#overlayCollab').show()
+                 $('#crossBtn').show()
+            }
+            if(Up['atlassianCard']){
+                    $('#overlayAboutUs').show()
+                    $('#crossBtn').show()
+            }
+            // if(Up['office']){
+            //      $('#overlayCollab').show()
+            // }
+            // $('#overlayLogin').show()
+        } 
      }
 
      window.onkeydown = function(e) {
@@ -298,8 +313,9 @@ function loadCanvas() {
 $(document).ready(function () {
     // if (!localStorage.user && (typeof localStorage.user === 'undefined'))
     //  $('#overlayLogin').show()
-    //  $('#overlayCollab').show()
-    //  $('#overlayAboutUs').show()
+     $('#overlayCollab').hide()
+     $('#overlayAboutUs').hide()
+     $('#crossBtn').hide()
 
     $('#loginBtn').click(() => {
         const email = $("#loginEmail").val()
@@ -317,6 +333,21 @@ $(document).ready(function () {
                     alert(data.message)
                 }
             });
+    })
+    $('#crossBtn').click(() => {
+        console.log('clicked')
+        if($('#overlayCollab').is(":visible")){
+            $('#overlayCollab').hide()
+            $('#crossBtn').hide()
+        }
+        if($('#overlayLogin').is(":visible")){
+            $('#overlayLogin').hide()
+            $('#crossBtn').hide()
+        }
+        if($('#overlayAboutUs').is(":visible")){
+            $('#overlayAboutUs').hide()
+            $('#crossBtn').hide()
+        }
     })
     loadCanvas();
 })
