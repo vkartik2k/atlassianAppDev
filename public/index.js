@@ -33,8 +33,15 @@ let officeX = 155
 let officeY = 10
 let officeYTrue = 10
 
+let X = {
+    'office': 158,
+    'coffeeshop':1 ,
+    'atlassianCard' ;1,
+    'gym':1,
+    'stadium':1
+}
 let Y = {
-    'office': -13
+    'office': -17
 }
 
 // hitbox toggles
@@ -73,8 +80,8 @@ function loadCanvas() {
     function drawGround() {
         ctx.drawImage(coffeeshop, 830, 160);
         ctx.drawImage(gym, 330, 8, 250, 180);
-        ctx.drawImage(stadium, 440, 140, 354.6, 275);
-        ctx.drawImage(office, officeX, Y['office']);
+        // ctx.drawImage(stadium, 440, 140, 354.6, 275);
+        ctx.drawImage(office, X['office'], Y['office']);
         ctx.drawImage(atlassianCard, 520, 380, 90, 90);
         ctx.drawImage(person1, camerax, cameray, 20, 40);
     }
