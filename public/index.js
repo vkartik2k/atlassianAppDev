@@ -218,6 +218,14 @@ function loadCanvas() {
                  $('#overlayGym').show()
                 $('#crossBtn').show()
             }
+            if(Up['coffeeshop']){
+                 $('#overlayCafe').show()
+                $('#crossBtn').show()
+            }
+            if(Up['stadium']){
+                 $('#overlayStadium').show()
+                $('#crossBtn').show()
+            }
         } 
      }
 
@@ -294,7 +302,6 @@ function loadCanvas() {
             coffeehopBox = false
         }
 
-
         if(coffeehopBox === true || stadiumBox === true ||atlassianCardBox === true || gymBox === true || officeBox === true) {
             $('.infobar2').show()
         }
@@ -326,8 +333,10 @@ function loadCanvas() {
 $(document).ready(function () {
     // if (!localStorage.user && (typeof localStorage.user === 'undefined'))
      $('#overlayGym').hide()
+     $('#overlayStadium').hide()
      $('#overlayOffice').hide()
      $('#overlayAboutUs').hide()
+     $('#overlayCafe').hide()
      $('#crossBtn').hide()
 
     $('#loginBtn').click(() => {
@@ -359,6 +368,14 @@ $(document).ready(function () {
         }
         if($('#overlayAboutUs').is(":visible")){
             $('#overlayAboutUs').hide()
+            $('#crossBtn').hide()
+        }
+        if($('#overlayCafe').is(":visible")){
+            $('#overlayCafe').hide()
+            $('#crossBtn').hide()
+        }
+        if($('#overlayStadium').is(":visible")){
+            $('#overlayStadium').hide()
             $('#crossBtn').hide()
         }
         if($('#overlayGym').is(":visible")){
