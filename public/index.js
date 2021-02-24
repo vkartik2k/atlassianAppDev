@@ -28,6 +28,10 @@ let variables = {
 let templates = {
 }
 var coffeeshop, atlassianCard, person1, gym, stadium, office;
+
+let officeX = 180
+let officeY = 10
+
 function loadCanvas() {
     let canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
@@ -52,7 +56,7 @@ function loadCanvas() {
         ctx.drawImage(coffeeshop, 830, 160, 226.87, 165);
         ctx.drawImage(gym, 330, 8, 250, 180);
         ctx.drawImage(stadium, 440, 140, 354.6, 275);
-        ctx.drawImage(office, 180, 10, 224, 280);
+        ctx.drawImage(office, officeX, officeY, 224, 280);
         ctx.drawImage(atlassianCard, 520, 380, 90, 90);
         ctx.drawImage(person1, camerax, cameray, 20, 40);
     }
@@ -110,6 +114,18 @@ function loadCanvas() {
         //     }
         // }
     }
+
+    function lift (building) {
+        let tempY = officeY;
+        let interval = setInterval(() => {
+            officeY -= 0.5
+        }, 100);
+        setTimeout(() => {
+            clearInterval(interval)
+            officeY = tempY
+        }, 2000)
+    }
+
     function keyListener(e){
         e = e || window.event
        
@@ -154,6 +170,7 @@ function loadCanvas() {
         document.getElementById("xvalue").innerHTML = Math.round(camerax,2);
         document.getElementById("yvalue").innerHTML = Math.round(cameray,2);
     }, 1000 / fps);
+    lift(office)
     (function () {
         function checkTime(i) {
             return (i < 10) ? "0" + i : i;
