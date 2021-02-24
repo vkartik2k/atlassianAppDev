@@ -263,6 +263,7 @@ function loadCanvas() {
         }
         else if(coffeehopBox==false && Up['coffeeshop']==true)
             drop('coffeeshop')
+
     }, 100);
     let checkHitbox = setInterval(() => {
         if(dist(camerax,cameray,355,235) < 20)
@@ -285,10 +286,22 @@ function loadCanvas() {
         else
             stadiumBox = false
 
-        if(dist(camerax,cameray,864,276) < 20)
+        if(dist(camerax,cameray,864,276) < 20){
             coffeehopBox = true
-        else
+        }
+            
+        else{
             coffeehopBox = false
+        }
+
+
+        if(coffeehopBox === true || stadiumBox === true ||atlassianCardBox === true || gymBox === true || officeBox === true) {
+            $('.infobar2').show()
+        }
+        else $('.infobar2').hide()
+
+
+            
     }, 50);
     (function () {
         function checkTime(i) {
