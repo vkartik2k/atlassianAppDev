@@ -29,8 +29,26 @@ let templates = {
 }
 var coffeeshop, atlassianCard, person1, gym, stadium, office;
 
-let officeX = 180
+let officeX = 155
 let officeY = 10
+let officeYTrue = 10
+
+let Y = {
+    'office': -13
+}
+
+// hitbox toggles
+let officeBox = false
+let coffeehopBox = false
+let atlassianCardBox = false
+let gymBox = false
+let stadiumBox = false
+
+let officeUp = false
+let coffeehopUp = false
+let atlassianCardUp = false
+let gymUp = false
+let stadiumUp = false
 
 function loadCanvas() {
     let canvas = document.getElementById("canvas");
@@ -53,10 +71,10 @@ function loadCanvas() {
     }
 
     function drawGround() {
-        ctx.drawImage(coffeeshop, 830, 160, 226.87, 165);
+        ctx.drawImage(coffeeshop, 830, 160);
         ctx.drawImage(gym, 330, 8, 250, 180);
         ctx.drawImage(stadium, 440, 140, 354.6, 275);
-        ctx.drawImage(office, officeX, officeY, 224, 280);
+        ctx.drawImage(office, officeX, Y['office']);
         ctx.drawImage(atlassianCard, 520, 380, 90, 90);
         ctx.drawImage(person1, camerax, cameray, 20, 40);
     }
@@ -115,15 +133,31 @@ function loadCanvas() {
         // }
     }
 
+    function dist(x1, y1, x2, y2){
+        var a = x1 - x2;
+        var b = y1 - y2;
+        var c = Math.sqrt( a*a + b*b );
+        return c
+    }
+
     function lift (building) {
+        officeUp = true
         let tempY = officeY;
         let interval = setInterval(() => {
-            officeY -= 0.5
+            Y[building] -= 1
         }, 100);
         setTimeout(() => {
             clearInterval(interval)
-            officeY = tempY
-        }, 2000)
+        }, 1000)
+    }
+    function drop (building) {
+        officeUp = false
+        let interval = setInterval(() => {
+            Y[building] += 1
+        }, 100);
+        setTimeout(() => {
+            clearInterval(interval)
+        }, 1000)
     }
 
     function keyListener(e){
@@ -170,7 +204,19 @@ function loadCanvas() {
         document.getElementById("xvalue").innerHTML = Math.round(camerax,2);
         document.getElementById("yvalue").innerHTML = Math.round(cameray,2);
     }, 1000 / fps);
-    lift(office)
+    let checkTriggerShift = setInterval(() => {
+        if(officeBox==true && officeUp==false){
+            lift('office')
+        }
+        else if(officeBox==false && officeUp==true)
+            drop('office')
+    }, 1000);
+    let checkHitbox = setInterval(() => {
+        if(dist(camerax,cameray,355,235) < 20)
+            officeBox = true
+        else
+            officeBox = false
+    }, 50);
     (function () {
         function checkTime(i) {
             return (i < 10) ? "0" + i : i;
