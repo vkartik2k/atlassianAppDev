@@ -54,7 +54,7 @@ function loadCanvas() {
         ctx.drawImage(stadium, 440, 140, 354.6, 275);
         ctx.drawImage(office, 180, 10, 224, 280);
         ctx.drawImage(atlassianCard, 520, 380, 90, 90);
-        ctx.drawImage(person1, camerax, cameray, 35, 70);
+        ctx.drawImage(person1, camerax, cameray, 20, 40);
     }
 
     function init() {
@@ -94,7 +94,7 @@ function loadCanvas() {
             counter--;
             if (counter <= 0) {
                 ctx.drawImage(atlassianCard, 520, 380, 90, 90);
-                ctx.drawImage(person1, 580, 390, 35, 70);
+                ctx.drawImage(person1, 580, 390, 20, 40);
                 
             }
         }
@@ -105,7 +105,7 @@ function loadCanvas() {
             counter--;
             if (counter <= 0) {
                 ctx.drawImage(atlassianCard, 520, 380, 90, 90);
-                ctx.drawImage(person1, 580, 390, 35, 70);
+                ctx.drawImage(person1, 580, 390, 20, 40);
         
             }
         }
