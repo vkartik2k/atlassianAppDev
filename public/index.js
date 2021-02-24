@@ -32,7 +32,7 @@ function loadCanvas() {
     let canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
 
-    var camerax = 580, cameray = 390;
+    var camerax = 580, cameray = 400;
     var fps = 60;
     var img;
     var loop;
@@ -115,22 +115,26 @@ function loadCanvas() {
        
         if(e.keyCode==37){
             if (camerax >10) {
-                camerax -= 5;
+                cameray -= 5*0.5;
+                camerax -= 5*0.866;
             }
         }
         else if(e.keyCode==39){
             if (camerax < 700) {
-                camerax += 5;
+                cameray += 5*0.5;
+                camerax += 5*0.866;
             }
         }
         else if(e.keyCode==38){
             if (cameray > 10) {
-                cameray -= 5;
+                cameray -= 5*0.5;
+                camerax += 5*0.866;
             }
         }
         else if(e.keyCode==40){
             if (cameray < 500) {
-                cameray += 5;
+                cameray += 5*0.5;
+                camerax -= 5*0.866;
             }
         }                           
      }
