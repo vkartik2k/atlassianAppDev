@@ -90,49 +90,53 @@ function loadCanvas() {
         }
         person1 = new Image();
         person1.src = "assets/person1.png";
-        person1.onload = function () {
-            counter--;
-            if (counter <= 0) {
-                ctx.drawImage(atlassianCard, 520, 380, 90, 90);
-                ctx.drawImage(person1, 580, 390, 20, 40);
+        // person1.onload = function () {
+        //     counter--;
+        //     if (counter <= 0) {
+        //         ctx.drawImage(atlassianCard, 520, 380, 90, 90);
+        //         ctx.drawImage(person1, 580, 390, 20, 40);
                 
-            }
-        }
+        //     }
+        // }
 
         atlassianCard = new Image();
         atlassianCard.src = "assets/atlassian.png";
-        atlassianCard.onload = function () {
-            counter--;
-            if (counter <= 0) {
-                ctx.drawImage(atlassianCard, 520, 380, 90, 90);
-                ctx.drawImage(person1, 580, 390, 20, 40);
+        // atlassianCard.onload = function () {
+        //     counter--;
+        //     if (counter <= 0) {
+        //         ctx.drawImage(atlassianCard, 520, 380, 90, 90);
+        //         ctx.drawImage(person1, 580, 390, 20, 40);
         
-            }
-        }
+        //     }
+        // }
     }
     function keyListener(e){
         e = e || window.event
        
         if(e.keyCode==37){
             if (camerax >10) {
+                person1.src="assets/pl.png";
                 cameray -= 5*0.5;
                 camerax -= 5*0.866;
             }
         }
         else if(e.keyCode==39){
-            if (camerax < 700) {
+            if (camerax < 1000) {
+                person1.src="assets/pr.png";
                 cameray += 5*0.5;
                 camerax += 5*0.866;
             }
         }
         else if(e.keyCode==38){
             if (cameray > 10) {
+                person1.src="assets/pu.png";
                 cameray -= 5*0.5;
                 camerax += 5*0.866;
             }
         }
         else if(e.keyCode==40){
-            if (cameray < 500) {
+            if (cameray < 1000) {
+                person1.src="assets/pd.png";
                 cameray += 5*0.5;
                 camerax -= 5*0.866;
             }
@@ -147,9 +151,26 @@ function loadCanvas() {
     var loop = setInterval(function () {
         update();
         draw();
-        document.getElementById("xvalue").innerHTML = camerax;
-        document.getElementById("yvalue").innerHTML = cameray;
+        document.getElementById("xvalue").innerHTML = Math.round(camerax,2);
+        document.getElementById("yvalue").innerHTML = Math.round(cameray,2);
     }, 1000 / fps);
+    (function () {
+        function checkTime(i) {
+            return (i < 10) ? "0" + i : i;
+        }
+
+        function startTime() {
+            var today = new Date(),
+                h = checkTime(today.getHours()),
+                m = checkTime(today.getMinutes()),
+                s = checkTime(today.getSeconds());
+            document.getElementById('timevalue').innerHTML = h + ":" + m + ":" + s;
+            t = setTimeout(function () {
+                startTime()
+            }, 500);
+        }
+        startTime();
+    })();
 
 }
 
