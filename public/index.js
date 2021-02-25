@@ -68,7 +68,7 @@ function loadCanvas() {
     var fps = 60;
     var img;
     var loop;
-
+    
     function update() {
     }
     function draw() {
@@ -76,7 +76,7 @@ function loadCanvas() {
         drawGround();
         // cameray-=1;
         // camerax+=1;
-
+        
 
     }
 
@@ -86,7 +86,27 @@ function loadCanvas() {
         ctx.drawImage(stadium, X['stadium'], Y['stadium']);
         ctx.drawImage(office, X['office'], Y['office']);
         ctx.drawImage(atlassianCard, X['atlassianCard'], Y['atlassianCard'], 85, 85);
+        ctx.font = "10px Comic Sans MS";
+        ctx.fillStyle = "blue";
+        ctx.textAlign = "center";
+        ctx.fillText("Me", camerax+7, cameray-5);
         ctx.drawImage(person1, camerax, cameray, 20, 40);
+
+
+
+        //SPAWNING DONT MIND!
+        const keys = Object.keys(people);
+
+        keys.forEach((key) => {
+            let dummyPerson=people[key];
+            ctx.font = "10px Comic Sans MS";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            let username=key.split("@")[0];
+            ctx.fillText(username, dummyPerson.x+7, dummyPerson.y-5);
+            person2.src="assets/p"+dummyPerson["o"]+".png";
+            ctx.drawImage(person2, dummyPerson.x, dummyPerson.y, 20, 40);
+        });
     }
 
     function init() {
@@ -130,7 +150,8 @@ function loadCanvas() {
                 
         //     }
         // }
-
+        person2 = new Image();
+        person2.src = "assets/person1.png";
         atlassianCard = new Image();
         atlassianCard.src = "assets/atlassian.png";
         // atlassianCard.onload = function () {
@@ -176,11 +197,13 @@ function loadCanvas() {
         if(e.keyCode==37){
             if (camerax >10) {
                 person1.src="assets/pl.png";
+                
                 cameray -= 5*0.5;
                 camerax -= 5*0.866;
                 socket.emit('locsend', {
                     x: camerax,
                     y: cameray,
+                    o: "l",
                     user : user.email
                 })
 
@@ -194,6 +217,7 @@ function loadCanvas() {
                 socket.emit('locsend', {
                     x: camerax,
                     y: cameray,
+                    o: "r",
                     user : user.email
                 })
             }
@@ -206,6 +230,7 @@ function loadCanvas() {
                 socket.emit('locsend', {
                     x: camerax,
                     y: cameray,
+                    o: "u",
                     user : user.email
                 })
             }
@@ -218,6 +243,7 @@ function loadCanvas() {
                 socket.emit('locsend', {
                     x: camerax,
                     y: cameray,
+                    o: "d",
                     user : user.email
                 })
             }
