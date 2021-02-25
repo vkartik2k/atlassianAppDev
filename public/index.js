@@ -86,10 +86,16 @@ function loadCanvas() {
         ctx.drawImage(stadium, X['stadium'], Y['stadium']);
         ctx.drawImage(office, X['office'], Y['office']);
         ctx.drawImage(atlassianCard, X['atlassianCard'], Y['atlassianCard'], 85, 85);
+        
+        
+        ctx.fillStyle = "black";
+        ctx.fillRect(camerax-2, cameray-15, 18, 12);
         ctx.font = "10px Comic Sans MS";
-        ctx.fillStyle = "blue";
+        ctx.fillStyle = "white";
         ctx.textAlign = "center";
         ctx.fillText("Me", camerax+7, cameray-5);
+        
+
         ctx.drawImage(person1, camerax, cameray, 20, 40);
 
 
@@ -99,8 +105,11 @@ function loadCanvas() {
 
         keys.forEach((key) => {
             let dummyPerson=people[key];
-            ctx.font = "10px Comic Sans MS";
+
             ctx.fillStyle = "white";
+            ctx.fillRect(dummyPerson.x-15, dummyPerson.y-15, 40, 12);
+            ctx.font = "10px Comic Sans MS";
+            ctx.fillStyle = "blue";
             ctx.textAlign = "center";
             let username=key.split("@")[0];
             ctx.fillText(username, dummyPerson.x+7, dummyPerson.y-5);
