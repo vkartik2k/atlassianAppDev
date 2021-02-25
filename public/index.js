@@ -19,6 +19,10 @@ let socket = io()
 
 var coffeeshop, atlassianCard, person1, gym, stadium, office;
 
+let officeX = 155
+let officeY = 10
+let officeYTrue = 10
+
 let X = {
     'office': 158,
     'coffeeshop': 801,
@@ -49,7 +53,10 @@ let Up = {
     'stadium': false
 }
 
-let user = JSON.parse(localStorage["user"])
+let user
+
+if (!localStorage.user && (typeof localStorage.user === 'undefined')) user = ""
+else user = JSON.parse(localStorage["user"])
 
 function loadCanvas() {
     let canvas = document.getElementById("canvas");
