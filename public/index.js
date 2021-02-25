@@ -15,9 +15,11 @@ async function postData(url = '', data = {}) {
     return response.json();
 }
 
-// let socket = io()
+let socket = io()
 
 var coffeeshop, atlassianCard, person1, gym, stadium, office;
+
+let people = {}
 
 let officeX = 155
 let officeY = 10
@@ -55,8 +57,8 @@ let Up = {
 
 let user
 
-// if (!localStorage.user && (typeof localStorage.user === 'undefined')) user = ""
-// else user = JSON.parse(localStorage["user"])
+if (!localStorage.user && (typeof localStorage.user === 'undefined')) user = ""
+else user = JSON.parse(localStorage["user"])
 
 function loadCanvas() {
     let canvas = document.getElementById("canvas");
@@ -362,6 +364,9 @@ $(document).ready(function () {
             message :"Connection Successful!"
         })
         socket.on('locrec', data => {
+            if(data.user != user.email) {
+                people[data.user] = data
+            }
             console.log(data)
         })
     }, 500)

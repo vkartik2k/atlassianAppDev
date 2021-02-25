@@ -1,7 +1,7 @@
 const express = require('express')
 const socketio = require('socket.io')
-const db = require('./database')
-const api = require('./routes/api')
+// const db = require('./database')
+// const api = require('./routes/api')
 
 const http = require('http')
 
@@ -22,7 +22,7 @@ io.on('connection', function (socket) {
     console.log(data)
   })
   socket.on('locsend', function (data) {
-    socket.emit('locrec', data)
+    io.emit('locrec', data)
   })
 })
 
@@ -76,7 +76,7 @@ io.on('connection', function (socket) {
 //   })
 // })
 
-app.use('/route', api)
+// app.use('/route', api)
 
 server.listen(3003, function () {
   console.log('App running on http://localhost:3000')
