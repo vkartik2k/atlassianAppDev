@@ -95,21 +95,53 @@
         <iframe src="https://cb.lk/ide" frameborder="0"></iframe>
       </div>
     </div>
-    <div id="overlayStadium" class="overlayWindow overlay" style="display: none">
-      <div>
-        <iframe
-          style="
-            -ms-zoom: 0.75;
-            -moz-transform: scale(0.75);
-            -moz-transform-origin: 0 0;
-            -o-transform: scale(0.75);
-            -o-transform-origin: 0 0;
-            -webkit-transform: scale(0.75);
-            -webkit-transform-origin: 0 0;
-          "
-          src="https://skribbl.io/"
-          frameborder="0"
-        ></iframe>
+    <div id="overlayStadium" class="overlayWindow gameOverlay" style="display: none;;">
+      <div style="background-color: black;">
+        <div class="gameContainer" style="background-color: black;">
+          <div class="gameLeft gameItem gameContainer">
+            <div class="recCenter">
+              <div class="gameHeaders"> RECREATION <br> CENTER</div>
+              <div class="gameRoomMenu" style="padding: 40px; text-align: left;">
+                <div class="gameContainer">
+                  <div style="flex-grow: 4;">
+                    HOST
+                    <hr>
+                    <button id="createGame" class="gameRoomFields" style="width: 100%;">Create Game</button><br><br>
+                    PUBLIC
+                    <hr>
+                    <button id="joinGame" class="gameRoomFields" style="width: 100%;">Join Game</button><br><br>
+                    PRIVATE
+                    <hr>
+                  </div>
+                  <div style="flex-grow: 1;"></div>
+                </div>
+                <div class="gameContainer">
+                  <div style="flex-grow: 4;">
+                    <input class="gameRoomFields" style="width: 95%;" type="text" placeholder="Enter Code"></input><br>
+                  </div>
+                  <div style="width: 65px;"><button id="joinPrivate">▶</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="chooseGame">
+              <div class="gameHeaders">CHOOSE A GAME</div>
+              <div class="gameContainer">
+                <div style="padding: 0px;">
+                    <img width="300px" src="./assets/background.png" alt="">
+                    <img width="300px" src="./assets/background.png" alt="">
+                </div>
+                <div style="padding: 0px;">
+                  <img width="300px" src="./assets/background.png" alt="">
+                  <img width="300px" src="./assets/background.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gameRight gameItem">
+            <!-- <div class="gameCam"><img src="./assets/ppt/Slide1.JPG" alt=""></div> -->
+            <video id="camFeed" class="gameCam" autoplay="true"></video>
+          </div>
+      </div>
       </div>
     </div>
     <div id="overlayGym" class="overlayWindow overlay" style="display: none">
@@ -143,5 +175,19 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- <script src="/socket.io/socket.io.js"></script> -->
     <script src="./index.js"></script>
+    <script type="text/javascript">
+      let video = document.querySelector('#camFeed')
+      navigator.getUserMedia = navigator.getUserMedia || navigator.getUserMedia || navigator.webkitGetUsermedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia
+      // if(navigator.getUserMedia) {
+      //   navigator.getUserMedia({video:true}, handleVideo, videoError)
+      // }
+      function handleVideo(stream) {
+        video.srcObject = stream;
+        video.play();
+      }
+      function videoError() {
+
+      }
+    </script>
   </body>
 </html>
