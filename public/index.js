@@ -15,23 +15,9 @@ async function postData(url = '', data = {}) {
     return response.json();
 }
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-let variables = {
-    person: {
-        x: 10,
-        y: 20,
-        orientation: 0
-    }
-}
-let templates = {
-}
-var coffeeshop, atlassianCard, person1, gym, stadium, office;
+let socket = io()
 
-let officeX = 155
-let officeY = 10
-let officeYTrue = 10
+var coffeeshop, atlassianCard, person1, gym, stadium, office;
 
 let X = {
     'office': 158,
@@ -62,6 +48,8 @@ let Up = {
     'gym': false,
     'stadium': false
 }
+
+let user = JSON.parse(localStorage["user"])
 
 function loadCanvas() {
     let canvas = document.getElementById("canvas");
@@ -181,6 +169,12 @@ function loadCanvas() {
                 person1.src="assets/pl.png";
                 cameray -= 5*0.5;
                 camerax -= 5*0.866;
+                socket.emit('locsend', {
+                    x: camerax,
+                    y: cameray,
+                    user : user.email
+                })
+
             }
         }
         else if(e.keyCode==39){
@@ -188,6 +182,11 @@ function loadCanvas() {
                 person1.src="assets/pr.png";
                 cameray += 5*0.5;
                 camerax += 5*0.866;
+                socket.emit('locsend', {
+                    x: camerax,
+                    y: cameray,
+                    user : user.email
+                })
             }
         }
         else if(e.keyCode==38){
@@ -195,6 +194,11 @@ function loadCanvas() {
                 person1.src="assets/pu.png";
                 cameray -= 5*0.5;
                 camerax += 5*0.866;
+                socket.emit('locsend', {
+                    x: camerax,
+                    y: cameray,
+                    user : user.email
+                })
             }
         }
         else if(e.keyCode==40){
@@ -202,6 +206,11 @@ function loadCanvas() {
                 person1.src="assets/pd.png";
                 cameray += 5*0.5;
                 camerax -= 5*0.866;
+                socket.emit('locsend', {
+                    x: camerax,
+                    y: cameray,
+                    user : user.email
+                })
             }
         }       
         // Enter key press for lifted building
@@ -327,17 +336,28 @@ function loadCanvas() {
         }
         startTime();
     })();
-
 }
 
+
 $(document).ready(function () {
-    // if (!localStorage.user && (typeof localStorage.user === 'undefined'))
-     $('#overlayGym').hide()
-     $('#overlayStadium').hide()
-     $('#overlayOffice').hide()
-     $('#overlayAboutUs').hide()
-     $('#overlayCafe').show()
-     $('#crossBtn').hide()
+    if (!localStorage.user && (typeof localStorage.user === 'undefined'))
+        $('#overlayLogin').show()
+    $('#overlayGym').hide()
+    $('#overlayStadium').hide()
+    $('#overlayOffice').hide()
+    $('#overlayAboutUs').hide()
+    $('#overlayCafe').hide()
+    $('#crossBtn').hide()
+
+    setTimeout(() => {
+        console.log("Sending request to Socket")
+        socket.emit('connected', {
+            message :"Connection Successful!"
+        })
+        socket.on('locrec', data => {
+            console.log(data)
+        })
+    }, 500)
 
     $('#loginBtn').click(() => {
         const email = $("#loginEmail").val()
@@ -346,6 +366,7 @@ $(document).ready(function () {
             .then(data => {
                 if (data.done === true) {
                     localStorage.setItem("user", JSON.stringify(data.user));
+                    user = data.user
                     console.log(data.user)
                     $('.overlayLogin').hide()
 
