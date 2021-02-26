@@ -346,10 +346,15 @@ hr {
 }
 
 .gameURL {
-  padding: 5px; 
-  background-color: #2b2b2b;
+  padding: 7px; 
+  /* background-color: #2b2b2b; */
   border: 0px black solid; 
-  border-radius: 5px;
-  margin: 0px;
+  /* border-radius: 5px; */
+  margin-top: -5px;
   width: 100%;
+}
+
+#gameURLSend {
+  display: block;
+  margin-left: -10px;
 }
