@@ -24,6 +24,10 @@ io.on('connection', function (socket) {
   socket.on('locsend', function (data) {
     io.emit('locrec', data)
   })
+
+  socket.on('msgsend', function (data) {
+    io.emit('msgrec', data)
+  })
 })
 
 

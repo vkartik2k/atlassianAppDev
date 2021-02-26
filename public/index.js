@@ -17,6 +17,8 @@ async function postData(url = '', data = {}) {
 
 let socket = io()
 
+let msgId = 0
+
 var coffeeshop, atlassianCard, person1, gym, stadium, office;
 
 let people = {}
@@ -394,6 +396,27 @@ $(document).ready(function () {
     $('#crossBtn').hide()
     $('.gameWindow').hide()
 
+    function addNewMessage(msg) {
+        $('#messageContainer').html('<div class="message" id="msg' + msgId + '">' + msg + '</div>' + $('#messageContainer').html())
+        let currentId = msgId
+        msgId += 1
+        setTimeout(() => {
+            $('#msg' + currentId).hide()
+        }, 15000)
+    }
+
+    $('.textInput').on('keyup keydown', function (e) {
+        if (e.which === 9) {
+            let username=user.email.split("@")[0];
+            socket.emit('msgsend', {
+                user : user.email,
+                message : '<b>'+username+'</b> : '+ $(this).val()
+            })
+            addNewMessage('<b>Me</b> : '+$(this).val())
+            $(this).val('')
+        }
+    })
+
     let game1 = false
     let game2 = false
     let game3 = false
@@ -409,6 +432,11 @@ $(document).ready(function () {
                 people[data.user] = data
             }
             console.log(data)
+        })
+        socket.on('msgrec', data => {
+            if(data.user != user.email) {
+                addNewMessage(data.message)
+            }
         })
     }, 500)
 
@@ -553,4 +581,5 @@ $(document).ready(function () {
         $('.chooseGame').hide()
     })
     loadCanvas();
+
 })
