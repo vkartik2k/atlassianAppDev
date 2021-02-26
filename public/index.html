@@ -117,7 +117,7 @@
                 </div>
                 <div class="gameContainer">
                   <div style="flex-grow: 4;">
-                    <input class="gameRoomFields" style="width: 95%;" type="text" placeholder="Enter Code"></input><br>
+                    <input id="gameCode" class="gameRoomFields" style="width: 95%;" type="text" placeholder="Enter Code"></input><br>
                   </div>
                   <div style="width: 65px;"><button id="joinPrivate">▶</button></div>
                 </div>
@@ -127,18 +127,21 @@
               <div class="gameHeaders">CHOOSE A GAME</div>
               <div class="gameContainer">
                 <div style="padding: 0px;">
-                    <img width="300px" src="./assets/background.png" alt="">
-                    <img width="300px" src="./assets/background.png" alt="">
+                    <img id="game1" width="300px" src="./assets/background.png" alt="">
+                    <img id="game2" width="300px" src="./assets/background.png" alt="">
                 </div>
                 <div style="padding: 0px;">
-                  <img width="300px" src="./assets/background.png" alt="">
-                  <img width="300px" src="./assets/background.png" alt="">
+                  <img id="game3" width="300px" src="./assets/background.png" alt="">
+                  <img id="game4" width="300px" src="./assets/background.png" alt="">
                 </div>
               </div>
             </div>
+            <div class="gameWindow" style="flex-grow: 1;">
+              <button id="gameCrossBtn" class="gameCrossBtn" style="position: absolute; top: 20px; right: 300px;">✖</button>
+              <iframe id="gameWindow" src="https://sribbl.io/" frameborder="0"></iframe>
+            </div>
           </div>
           <div class="gameRight gameItem">
-            <!-- <div class="gameCam"><img src="./assets/ppt/Slide1.JPG" alt=""></div> -->
             <video id="camFeed" class="gameCam" autoplay="true"></video>
           </div>
       </div>

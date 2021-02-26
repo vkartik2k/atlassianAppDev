@@ -206,7 +206,6 @@ iframe {
 }
 
 .gameContainer {
-  background-color;
 	display: flex;
 	flex-direction: row;
 	width: 100%;
@@ -281,10 +280,10 @@ hr {
   font-size: large;
 }
 
-.gameContainer img:hover {
+/* .gameContainer img:hover {
   border: yellowgreen 3px solid;
   cursor: pointer;
-}
+} */
 
 #camFeed {
   width: 100%;

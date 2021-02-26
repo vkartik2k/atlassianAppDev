@@ -392,6 +392,12 @@ $(document).ready(function () {
     $('#overlayAboutUs').hide()
     $('#overlayCafe').hide()
     $('#crossBtn').hide()
+    $('.skribbl').hide()
+
+    let game1 = false
+    let game2 = false
+    let game3 = false
+    let game4 = false
 
     setTimeout(() => {
         console.log("Sending request to Socket")
@@ -451,6 +457,100 @@ $(document).ready(function () {
             $('#overlayGym').hide()
             $('#crossBtn').hide()
         }
+    })
+    $('#game1').click(() => {
+        document.getElementById("game1").style.border = "3px solid rgb(58, 232, 255)";
+        document.getElementById("game2").style.border = "none";
+        document.getElementById("game3").style.border = "none";
+        document.getElementById("game4").style.border = "none";
+        game1 = true
+        game2 = false
+        game3 = false
+        game4 = false
+    })
+    $('#game2').click(() => {
+        document.getElementById("game1").style.border = "none";
+        document.getElementById("game2").style.border = "3px solid rgb(58, 232, 255)";
+        document.getElementById("game3").style.border = "none";
+        document.getElementById("game4").style.border = "none";
+        game1 = false
+        game2 = true
+        game3 = false
+        game4 = false
+        
+    })
+    $('#game3').click(() => {
+        document.getElementById("game1").style.border = "none";
+        document.getElementById("game2").style.border = "none";
+        document.getElementById("game3").style.border = "3px solid rgb(58, 232, 255)";
+        document.getElementById("game4").style.border = "none";
+        game1 = false
+        game2 = false
+        game3 = true
+        game4 = false
+    })
+    $('#game4').click(() => {
+        document.getElementById("game1").style.border = "none";
+        document.getElementById("game2").style.border = "none";
+        document.getElementById("game3").style.border = "none";
+        document.getElementById("game4").style.border = "3px solid rgb(58, 232, 255)";
+        game1 = false
+        game2 = false
+        game3 = false
+        game4 = true
+    })
+    $('#gameCrossBtn').click(() => {
+        document.getElementById("game1").style.border = "none";
+        document.getElementById("game2").style.border = "none";
+        document.getElementById("game3").style.border = "none";
+        document.getElementById("game4").style.border = "none";
+        game1 = false
+        game2 = false
+        game3 = false
+        game4 = false
+        $('.gameWindow').hide()
+        $('.recCenter').show()
+        $('.chooseGame').show()
+    })
+
+    $('#createGame').click(() => {
+        if(game1 == true)
+            document.getElementById("gameWindow").src = "https://skribbl.io/"
+        if(game2 == true)
+            document.getElementById("gameWindow").src = "https://codenames.game/"
+        if(game3 == true)
+            document.getElementById("gameWindow").src = "https://cardsagainsthumanity.com/"
+        if(game4 == true)
+            document.getElementById("gameWindow").src = "https://www.catan.com/game/catan-universe#"
+            $('.gameWindow').show()
+            $('.recCenter').hide()
+            $('.chooseGame').hide()
+        })
+    $('#joinGame').click(() => {
+        if(game1 == true)
+            document.getElementById("gameWindow").src = "https://skribbl.io/"
+        if(game2 == true)
+            document.getElementById("gameWindow").src = "https://codenames.game/"
+        if(game3 == true)
+            document.getElementById("gameWindow").src = "https://cardsagainsthumanity.com/"
+        if(game4 == true)
+            document.getElementById("gameWindow").src = "https://www.catan.com/game/catan-universe"
+            $('.gameWindow').show()
+            $('.recCenter').hide()
+            $('.chooseGame').hide()
+        })
+    $('#joinPrivate').click(() => {
+        if(game1 == true)
+            document.getElementById("gameWindow").src = "https://skribbl.io/"
+        if(game2 == true)
+            document.getElementById("gameWindow").src = "https://codenames.game/"
+        if(game3 == true)
+            document.getElementById("gameWindow").src = "https://cardsagainsthumanity.com/"
+        if(game4 == true)
+            document.getElementById("gameWindow").src = "https://www.catan.com/game/catan-universe#"
+        $('.gameWindow').show()
+        $('.recCenter').hide()
+        $('.chooseGame').hide()
     })
     loadCanvas();
 })
