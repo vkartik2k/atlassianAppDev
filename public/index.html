@@ -18,6 +18,8 @@
       rel="stylesheet"
       href="http://www.fontsaddict.com/fontface/lemonmilk.ttf"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
@@ -100,7 +102,7 @@
         <div class="gameContainer" style="background-color: black;">
           <div class="gameLeft gameItem gameContainer">
             <div class="recCenter">
-              <div class="gameHeaders"> RECREATION <br> CENTER</div>
+              <div class="gameHeaders" style="text-align: left; padding-left: 40px;"> RECREATION <br> CENTER</div>
               <div class="gameRoomMenu" style="padding: 40px; text-align: left;">
                 <div class="gameContainer">
                   <div style="flex-grow: 4;">
@@ -119,22 +121,24 @@
                   <div style="flex-grow: 4;">
                     <input id="gameCode" class="gameRoomFields" style="width: 95%;" type="text" placeholder="Enter Code"></input><br>
                   </div>
-                  <div style="width: 65px;"><button id="joinPrivate">▶</button></div>
+                  <div style="width: 65px;"><img src="./assets/arrbtn.png" id="joinPrivate"/></div>
                 </div>
               </div>
             </div>
             <div class="chooseGame">
               <div class="gameHeaders">CHOOSE A GAME</div>
               <div class="gameContainer">
-                <div style="padding: 0px;">
-                    <img id="game1" width="300px" src="./assets/background.png" alt="">
-                    <img id="game2" width="300px" src="./assets/background.png" alt="">
+                <div style="padding-left: 10px; padding-right: 10px; width: 310px;">
+                    <img id="game1" class="gameCard" width="300px" src="./assets/game1.png" alt="">
+                    <img id="game2" class="gameCard" width="300px" src="./assets/game3.png" alt="">
                 </div>
-                <div style="padding: 0px;">
-                  <img id="game3" width="300px" src="./assets/background.png" alt="">
-                  <img id="game4" width="300px" src="./assets/background.png" alt="">
+                <div style="padding-left: 10px; padding-right: 10px; width: 310px;">
+                  <img id="game3" class="gameCard" width="300px" src="./assets/game2.png" alt="">
+                  <img id="game4" class="gameCard" width="300px" src="./assets/game4.png" alt="">
                 </div>
+                <div style="width: 100px;"></div>
               </div>
+              
             </div>
             <div class="gameWindow" style="flex-grow: 1;">
               <button id="gameCrossBtn" class="gameCrossBtn" style="position: absolute; top: 20px; right: 300px;">✖</button>
@@ -144,6 +148,7 @@
           <div class="gameRight gameItem">
             <video id="camFeed" class="gameCam" autoplay="true"></video>
           </div>
+          
       </div>
       </div>
     </div>
