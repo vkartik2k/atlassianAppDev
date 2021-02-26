@@ -418,7 +418,7 @@ $(document).ready(function () {
     if (!localStorage.user && (typeof localStorage.user === 'undefined'))
         $('#overlayLogin').show()
     $('#overlayGym').hide()
-    $('#overlayStadium').hide()
+    $('#overlayStadium').show()
     $('#overlayOffice').hide()
     $('#overlayAboutUs').hide()
     $('#overlayCafe').hide()
@@ -583,19 +583,19 @@ $(document).ready(function () {
             $('.recCenter').hide()
             $('.chooseGame').hide()
         })
-    $('#joinGame').click(() => {
-        if(game1 == true)
-            document.getElementById("gameWindow").src = "https://skribbl.io/"
-        if(game2 == true)
-            document.getElementById("gameWindow").src = "https://codenames.game/"
-        if(game3 == true)
-            document.getElementById("gameWindow").src = "https://cardsagainsthumanity.com/"
-        if(game4 == true)
-            document.getElementById("gameWindow").src = "https://www.catan.com/game/catan-universe"
-            $('.gameWindow').show()
-            $('.recCenter').hide()
-            $('.chooseGame').hide()
-        })
+    // $('#joinGame').click(() => {
+    //     if(game1 == true)
+    //         document.getElementById("gameWindow").src = "https://skribbl.io/"
+    //     if(game2 == true)
+    //         document.getElementById("gameWindow").src = "https://codenames.game/"
+    //     if(game3 == true)
+    //         document.getElementById("gameWindow").src = "https://cardsagainsthumanity.com/"
+    //     if(game4 == true)
+    //         document.getElementById("gameWindow").src = "https://www.catan.com/game/catan-universe"
+    //         $('.gameWindow').show()
+    //         $('.recCenter').hide()
+    //         $('.chooseGame').hide()
+    //     })
     $('#joinPrivate').click(() => {
         if(game1 == true)
             document.getElementById("gameWindow").src = "https://skribbl.io/"
@@ -609,11 +609,24 @@ $(document).ready(function () {
         $('.recCenter').hide()
         $('.chooseGame').hide()
     })
+    $('#joinGame').click(() => {
+        $('.gameRoomMenu').hide()
+        $('.gameRoomList').show()
+    })
+    $('#gameBack').click(() => {
+        console.log('clicked')
+        $('.gameRoomMenu').show()
+        $('.gameRoomList').hide()
+    })
     $('#gameURLBtn').click(() => {
         if($('#gameURL').val() != ""){
             // Emit add to server list
             // in server broadcast list to all
         }
+    })
+    $('#gameURLSend').click(() => {
+        $('.gameURL').hide()
+        $('.gameCode').show()
     })
     loadCanvas();
 

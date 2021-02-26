@@ -124,6 +124,25 @@
                   <div style="width: 65px;"><img src="./assets/arrbtn.png" id="joinPrivate"/></div>
                 </div>
               </div>
+              <div class="gameRoomList" style="padding: 40px; text-align: left; display: none;">
+                <div class="gameContainer">
+                  <div style="flex-grow: 4;">
+                    <button id="gameBack" style="color: white; background-color: #2b2b2b; border: none;">⬅</button>
+                    PUBLIC ROOMS
+                    <hr>
+                    <ul style="padding: 0px;">
+                      <button id="createGame" class="gameRoomFields" style="width: 100%;">ROOM 1</button><br><br>
+                    </ul>
+                  </div>
+                  <div style="flex-grow: 1;"></div>
+                </div>
+                <div class="gameContainer">
+                  <div style="flex-grow: 4;">
+                    <!-- <input id="gameCode" class="gameRoomFields" style="width: 95%;" type="text" placeholder="Enter Code"></input><br> -->
+                  </div>
+                  <!-- <div style="width: 65px;"><img src="./assets/arrbtn.png" id="joinPrivate"/></div> -->
+                </div>
+              </div>
             </div>
             <div class="chooseGame">
               <div class="gameHeaders">CHOOSE A GAME</div>
@@ -150,10 +169,15 @@
               <video id="camFeed" class="gameCam" autoplay="true"></video>
             </div>
             <div class="gameContainer" style="border: 1px black solid; height: 5%;">
-              <div>
+              <div class="gameURL">
                 <input type="text" placeholder="Paste URL" id="gameURL">
               </div>
-                <div style="height: 44px; margin-top: -4px; margin-left: 10px;"><img src="./assets/arrbtn.png" id="joinPrivate"/></div>
+                <div class="gameURL" style="height: 44px; margin-top: -4px; margin-left: 10px;">
+                  <img src="./assets/arrbtn.png" id="gameURLSend"/>
+                </div>
+                <div class="gameCode" style="display: none; color: white;">
+                  Room Code: <em>SAMAFF</em>
+                </div>
             </div>
           </div>
           
