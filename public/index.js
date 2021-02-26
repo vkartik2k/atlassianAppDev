@@ -56,7 +56,7 @@ let Up = {
 }
 
 let user
-
+let numofpeople=1;
 if (!localStorage.user && (typeof localStorage.user === 'undefined')) user = ""
 else user = JSON.parse(localStorage["user"])
 
@@ -102,7 +102,7 @@ function loadCanvas() {
 
         //SPAWNING DONT MIND!
         const keys = Object.keys(people);
-
+        numofpeople=keys.length+1;
         keys.forEach((key) => {
             let dummyPerson=people[key];
 
@@ -113,7 +113,7 @@ function loadCanvas() {
             ctx.textAlign = "center";
             let username=key.split("@")[0];
             ctx.fillText(username, dummyPerson.x+7, dummyPerson.y-5);
-            person2.src="assets/p"+dummyPerson["o"]+".png";
+            person2.src="assets/p2"+dummyPerson["o"]+".png";
             ctx.drawImage(person2, dummyPerson.x, dummyPerson.y, 20, 40);
         });
     }
@@ -292,6 +292,7 @@ function loadCanvas() {
         draw();
         document.getElementById("xvalue").innerHTML = Math.round(camerax,2);
         document.getElementById("yvalue").innerHTML = Math.round(cameray,2);
+        document.getElementById("numofpeople").innerHTML = numofpeople;
     }, 1000 / fps);
     let checkTriggerShift = setInterval(() => {
         if(officeBox==true && Up['office']==false){
