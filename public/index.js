@@ -126,31 +126,31 @@ function loadCanvas() {
 
         // canvas.globalCompositeOperation = "destination-over";
         coffeeshop = new Image();
-        coffeeshop.src = "assets/coffeeshop.png";
+        coffeeshop.src = "./assets/coffeeshop.png";
         coffeeshop.onload = function () {
             ctx.drawImage(coffeeshop, 830, 160, 226.87, 165);
         }
 
         gym = new Image();
-        gym.src = "assets/gym.png";
+        gym.src = "./assets/gym.png";
         gym.onload = function () {
             ctx.drawImage(gym, 330, 8, 250, 180);
 
         }
         stadium = new Image();
-        stadium.src = "assets/stadium.png";
+        stadium.src = "./assets/stadium.png";
         stadium.onload = function () {
             ctx.drawImage(stadium, 440, 140, 354.6, 275);
 
         }
         office = new Image();
-        office.src = "assets/office.png";
+        office.src = "./assets/office.png";
         office.onload = function () {
             ctx.drawImage(office, 180, 10, 224, 280);
 
         }
         person1 = new Image();
-        person1.src = "assets/person1.png";
+        person1.src = "./assets/person1.png";
         // person1.onload = function () {
         //     counter--;
         //     if (counter <= 0) {
@@ -160,9 +160,9 @@ function loadCanvas() {
         //     }
         // }
         person2 = new Image();
-        person2.src = "assets/person1.png";
+        person2.src = "./assets/person1.png";
         atlassianCard = new Image();
-        atlassianCard.src = "assets/atlassian.png";
+        atlassianCard.src = "./assets/atlassian.png";
         // atlassianCard.onload = function () {
         //     counter--;
         //     if (counter <= 0) {
@@ -205,7 +205,7 @@ function loadCanvas() {
        
         if(e.keyCode==37){
             if (camerax >10) {
-                person1.src="assets/pl.png";
+                person1.src="./assets/pl.png";
                 
                 cameray -= 5*0.5;
                 camerax -= 5*0.866;
@@ -220,7 +220,7 @@ function loadCanvas() {
         }
         else if(e.keyCode==39){
             if (camerax < 1000) {
-                person1.src="assets/pr.png";
+                person1.src="./assets/pr.png";
                 cameray += 5*0.5;
                 camerax += 5*0.866;
                 socket.emit('locsend', {
@@ -233,7 +233,7 @@ function loadCanvas() {
         }
         else if(e.keyCode==38){
             if (cameray > 10) {
-                person1.src="assets/pu.png";
+                person1.src="./assets/pu.png";
                 cameray -= 5*0.5;
                 camerax += 5*0.866;
                 socket.emit('locsend', {
@@ -246,7 +246,7 @@ function loadCanvas() {
         }
         else if(e.keyCode==40){
             if (cameray < 1000) {
-                person1.src="assets/pd.png";
+                person1.src="./assets/pd.png";
                 cameray += 5*0.5;
                 camerax -= 5*0.866;
                 socket.emit('locsend', {
