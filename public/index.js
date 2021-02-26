@@ -387,7 +387,7 @@ $(document).ready(function () {
     if (!localStorage.user && (typeof localStorage.user === 'undefined'))
         $('#overlayLogin').show()
     $('#overlayGym').hide()
-    $('#overlayStadium').show()
+    $('#overlayStadium').hide()
     $('#overlayOffice').hide()
     $('#overlayAboutUs').hide()
     $('#overlayCafe').hide()
