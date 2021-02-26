@@ -117,7 +117,7 @@ function loadCanvas() {
             let username=key.split("@")[0];
             ctx.fillText(username, dummyPerson.x+7, dummyPerson.y-5);
             person2.src="assets/p2"+dummyPerson["o"]+".png";
-            ctx.drawImage(person2, dummyPerson.x-21, dummyPerson.y-13, 53, 68);
+            ctx.drawImage(person2, dummyPerson.x, dummyPerson.y, 20, 40);
         });
     }
 
@@ -283,6 +283,33 @@ function loadCanvas() {
                 $('#crossBtn').show()
             }
         } 
+        if(e.keyCode==27){
+            if($('#overlayOffice').is(":visible")){
+                $('#overlayOffice').hide()
+                $('#crossBtn').hide()
+            }
+            if($('#overlayLogin').is(":visible")){
+                $('#overlayLogin').hide()
+                $('#crossBtn').hide()
+            }
+            if($('#overlayAboutUs').is(":visible")){
+                $('#overlayAboutUs').hide()
+                $('#crossBtn').hide()
+            }
+            if($('#overlayCafe').is(":visible")){
+                $('#overlayCafe').hide()
+                $('#crossBtn').hide()
+            }
+            if($('#overlayStadium').is(":visible")){
+                $('#overlayStadium').hide()
+                $('#crossBtn').hide()
+            }
+            if($('#overlayGym').is(":visible")){
+                document.getElementById('videoPlayer').pause()
+                $('#overlayGym').hide()
+                $('#crossBtn').hide()
+            }
+        }
      }
 
      window.onkeydown = function(e) {
@@ -391,7 +418,7 @@ $(document).ready(function () {
     if (!localStorage.user && (typeof localStorage.user === 'undefined'))
         $('#overlayLogin').show()
     $('#overlayGym').hide()
-    $('#overlayStadium').show()
+    $('#overlayStadium').hide()
     $('#overlayOffice').hide()
     $('#overlayAboutUs').hide()
     $('#overlayCafe').hide()
@@ -460,8 +487,8 @@ $(document).ready(function () {
                 }
             });
     })
+
     $('#crossBtn').click(() => {
-        console.log('clicked')
         if($('#overlayOffice').is(":visible")){
             $('#overlayOffice').hide()
             $('#crossBtn').hide()
@@ -581,6 +608,12 @@ $(document).ready(function () {
         $('.gameWindow').show()
         $('.recCenter').hide()
         $('.chooseGame').hide()
+    })
+    $('#gameURLBtn').click(() => {
+        if($('#gameURL').val() != ""){
+            // Emit add to server list
+            // in server broadcast list to all
+        }
     })
     loadCanvas();
 
