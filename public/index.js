@@ -102,6 +102,7 @@ function loadCanvas() {
 
         //SPAWNING DONT MIND!
         const keys = Object.keys(people);
+        console.log(people)
         numofpeople=keys.length+1;
         keys.forEach((key) => {
             let dummyPerson=people[key];
@@ -114,7 +115,7 @@ function loadCanvas() {
             let username=key.split("@")[0];
             ctx.fillText(username, dummyPerson.x+7, dummyPerson.y-5);
             person2.src="assets/p2"+dummyPerson["o"]+".png";
-            ctx.drawImage(person2, dummyPerson.x, dummyPerson.y, 20, 40);
+            ctx.drawImage(person2, dummyPerson.x-21, dummyPerson.y-13, 53, 68);
         });
     }
 
@@ -388,7 +389,7 @@ $(document).ready(function () {
     if (!localStorage.user && (typeof localStorage.user === 'undefined'))
         $('#overlayLogin').show()
     $('#overlayGym').hide()
-    $('#overlayStadium').hide()
+    $('#overlayStadium').show()
     $('#overlayOffice').hide()
     $('#overlayAboutUs').hide()
     $('#overlayCafe').hide()

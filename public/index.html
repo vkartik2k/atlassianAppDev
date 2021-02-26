@@ -145,8 +145,16 @@
               <iframe id="gameWindow" src="https://skribbl.io/" frameborder="0"></iframe>
             </div>
           </div>
-          <div class="gameRight gameItem">
-            <video id="camFeed" class="gameCam" autoplay="true"></video>
+          <div class="gameRight gameItem gameContainer" style="flex-direction: column;">
+            <div  style="flex-grow: 1;">
+              <video id="camFeed" class="gameCam" autoplay="true"></video>
+            </div>
+            <div class="gameContainer" style="border: 1px black solid; height: 5%;">
+              <div>
+                <input type="text" placeholder="Paste URL" id="gameURL">
+              </div>
+                <div style="height: 44px; margin-top: -4px; margin-left: 10px;"><img src="./assets/arrbtn.png" id="joinPrivate"/></div>
+            </div>
           </div>
           
       </div>
