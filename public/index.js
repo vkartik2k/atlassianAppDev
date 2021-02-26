@@ -392,7 +392,7 @@ $(document).ready(function () {
     $('#overlayAboutUs').hide()
     $('#overlayCafe').hide()
     $('#crossBtn').hide()
-    $('.skribbl').hide()
+    $('.gameWindow').hide()
 
     let game1 = false
     let game2 = false
