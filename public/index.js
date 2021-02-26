@@ -27,6 +27,8 @@ let officeX = 155
 let officeY = 10
 let officeYTrue = 10
 
+let Scrurl;
+
 let X = {
     'office': 158,
     'coffeeshop': 801,
@@ -104,7 +106,7 @@ function loadCanvas() {
 
         //SPAWNING DONT MIND!
         const keys = Object.keys(people);
-        console.log(people)
+        // console.log(people)
         numofpeople=keys.length+1;
         keys.forEach((key) => {
             let dummyPerson=people[key];
@@ -468,6 +470,9 @@ $(document).ready(function () {
                 addNewMessage(data.message)
             }
         })
+        socket.on('urlrec', data => {
+            Scrurl = data.url
+        })
     }, 500)
 
     $('#loginBtn').click(() => {
@@ -628,11 +633,24 @@ $(document).ready(function () {
     $('#gameURLSend').click(() => {
         $('.gameURL').hide()
         $('.gameCode').show()
+        socket.emit('urlsend', {
+            url: $('#gameURL').val()
+        })
+        
     })
     $('#joinBtn').click(() => {
         $('#overlayCafeMeet').show()
         $('#overlayCafe').hide()
     })
+    $('#joinScribbl').click(() => {
+        let currUrl = Scrurl
+        console.log(Scrurl)
+        document.getElementById("gameWindow").src = Scrurl
+        $('.gameWindow').show()
+        $('.recCenter').hide()
+        $('.chooseGame').hide()
+    })
+    
     loadCanvas();
 
 })
