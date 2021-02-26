@@ -28,6 +28,9 @@ io.on('connection', function (socket) {
   socket.on('msgsend', function (data) {
     io.emit('msgrec', data)
   })
+  socket.on('urlsend', function (data) {
+    io.emit('urlrec', data)
+  })
 })
 
 

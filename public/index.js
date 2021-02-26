@@ -423,8 +423,8 @@ $(document).ready(function () {
     $('#overlayStadium').hide()
     $('#overlayOffice').hide()
     $('#overlayAboutUs').hide()
-    $('#overlayCafe').show()
-    $('#overlayCafeMeet').show()
+    $('#overlayCafe').hide()
+    $('#overlayCafeMeet').hide()
     $('#crossBtn').hide()
     $('.gameWindow').hide()
 
@@ -636,6 +636,7 @@ $(document).ready(function () {
         socket.emit('urlsend', {
             url: $('#gameURL').val()
         })
+        console.log($('#gameURL').val())
         
     })
     $('#joinBtn').click(() => {
