@@ -28,7 +28,7 @@ line-height: 1.4;
   -webkit-box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.75);
-  z-index: 5;
+  z-index: 10;
 }
 
 .header2 {
@@ -38,7 +38,7 @@ line-height: 1.4;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 84px;
-  z-index: 5;
+  z-index: 10;
 }
 
 .infobar {

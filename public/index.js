@@ -283,6 +283,7 @@ function loadCanvas() {
             if(Up['stadium']){
                  $('#overlayStadium').show()
                 $('#crossBtn').show()
+                // video.play()
             }
         } 
         if(e.keyCode==27){
@@ -428,7 +429,22 @@ $(document).ready(function () {
     $('#crossBtn').hide()
     $('.gameWindow').hide()
 
-    function addNewMessage(msg) {
+    let video = document.querySelector('#camFeed')
+    let video2 = document.querySelector('#videoFeed')
+      navigator.getUserMedia = navigator.getUserMedia || navigator.getUserMedia || navigator.webkitGetUsermedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia
+      if(navigator.getUserMedia) {
+        navigator.getUserMedia({video:true}, handleVideo, videoError)
+      }
+      function handleVideo(stream) {
+        video.srcObject = stream;
+        video2.srcObject = stream;
+        video.play();
+        video2.play();
+      }
+      function videoError() {
+
+      }
+      function addNewMessage(msg) {
         $('#messageContainer').html('<div class="message" id="msg' + msgId + '">' + msg + '</div>' + $('#messageContainer').html())
         let currentId = msgId
         msgId += 1
@@ -641,7 +657,6 @@ $(document).ready(function () {
     })
     $('#joinBtn').click(() => {
         $('#overlayCafeMeet').show()
-        $('#overlayCafe').hide()
     })
     $('#joinScribbl').click(() => {
         let currUrl = Scrurl
@@ -651,7 +666,9 @@ $(document).ready(function () {
         $('.recCenter').hide()
         $('.chooseGame').hide()
     })
-    
+    $('#videoEnd').click(() => {
+        $('#overlayCafeMeet').hide()
+    })
     loadCanvas();
 
 })

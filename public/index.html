@@ -209,10 +209,19 @@
       <img src="assets/Group 15.png" class="joinBtn" id="joinBtn">
       <img src="assets/cafe.png" height="600">
     </div>
-    <div id="overlayCafeMeet" class="overlayWindow overlay" style="display: none; z-index: 4;">
-      <div style="border: yellowgreen 2px solid; border-radius: 0px; background-color: transparent; width: 100%; height: 100%; margin-top: 20px;">
-        <div></div>
-        <div style="width: 100%; border-radius: 0px; height: 9%; background-color: teal; position: absolute; bottom: 0px;"></div>
+    <div id="overlayCafeMeet" class="overlayWindow overlay" style="display: none; z-index: 6;">
+      <div style=" background-color: transparent; width: 100%; height: 94%; margin-top: 18px;">
+        <div class="gameContainer" style="border: yellowgreen 2px solid; border-radius: 0px; height: 89%; margin-top: 11px;">
+          <div class="" style="width: 50%; height: 60%; background-color: white; margin-top: 9%; overflow: hidden;">
+            <video id="videoFeed" class="" autoplay="true" style="width: 100%; margin-top: -100px;"></video>
+          </div>
+          <div class="" style="width: 50%; height: 60%; background-color: white; margin-top: 9%;">
+            <img src="./assets/background.png" alt="" style="height: 100%; width: 100%;">
+          </div>
+        </div>
+        <div style="width: 100%; border-radius: 0px; height: 9%; background-color: black; position: absolute; bottom: 0px; text-align: center;">
+          <img id="videoEnd" src="./assets/videoEnd.png" alt="" style="height: 100%; margin: 0px;">
+        </div>
       </div>
     </div>
     <div id="messageContainer">
@@ -223,19 +232,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./index.js"></script>
-    <script type="text/javascript">
-      let video = document.querySelector('#camFeed')
-      navigator.getUserMedia = navigator.getUserMedia || navigator.getUserMedia || navigator.webkitGetUsermedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia
-      // if(navigator.getUserMedia) {
-      //   navigator.getUserMedia({video:true}, handleVideo, videoError)
-      // }
-      function handleVideo(stream) {
-        video.srcObject = stream;
-        video.play();
-      }
-      function videoError() {
-
-      }
-    </script>
   </body>
 </html>
