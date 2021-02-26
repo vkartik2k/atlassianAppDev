@@ -94,11 +94,11 @@ line-height: 1.4;
     backdrop-filter: blur(4px);
 }
 
-.overlay div {
+.overlay > div {
     background-color: white;
-    position: absolute;
     top: 50%;
     left: 50%;
+    position: absolute;
     width: 340px;
     border-radius: 10px;
     transform: translate(-50%,-50%);

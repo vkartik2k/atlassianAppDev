@@ -418,10 +418,11 @@ $(document).ready(function () {
     if (!localStorage.user && (typeof localStorage.user === 'undefined'))
         $('#overlayLogin').show()
     $('#overlayGym').hide()
-    $('#overlayStadium').show()
+    $('#overlayStadium').hide()
     $('#overlayOffice').hide()
     $('#overlayAboutUs').hide()
-    $('#overlayCafe').hide()
+    $('#overlayCafe').show()
+    $('#overlayCafeMeet').show()
     $('#crossBtn').hide()
     $('.gameWindow').hide()
 
@@ -627,6 +628,10 @@ $(document).ready(function () {
     $('#gameURLSend').click(() => {
         $('.gameURL').hide()
         $('.gameCode').show()
+    })
+    $('#joinBtn').click(() => {
+        $('#overlayCafeMeet').show()
+        $('#overlayCafe').hide()
     })
     loadCanvas();
 
